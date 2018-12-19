@@ -13,22 +13,22 @@ REC_PARAM_FIELDS = ["name", "type", "descr", "min", "max", "default"]
 # --> will need at least 1, though... how to find? can you run seedless? random?
 REC_PARAMS       = {
 
-                    ("limit", int, "target size of recommendation list",
+                    ("limit",            int, "target size of recommendation list",
                      1, 100, 20),
 
-                    ("seed_artists", list,  "comma-separated list of Spotify IDs for seed artists (max 5 overall)"),
-                    ("seed_genres",  list,  "comma-separated list of Spotify IDs for seed genres  (max 5 overall)"),
-                    ("seed_tracks",  list,  "comma-separated list of Spotify IDs for seed tracks  (max 5 overall)"),
+                    ("seed_artists",     list,  "comma-separated list of IDs for seed artists (max 5 overall)"),
+                    ("seed_genres",      list,  "comma-separated list of IDs for seed genres  (max 5 overall)"),
+                    ("seed_tracks",      list,  "comma-separated list of IDs for seed tracks  (max 5 overall)"),
 
-                    ("duration_ms", int, "duration of result track, in milliseconds",),
-                    ("loudness", float, "average volume of a track in dB"),
+                    ("duration_ms",      int,   "duration of result track, in milliseconds",),
+                    ("loudness",         float, "average volume of a track in dB"),
 
-                    ("key", int, "musical key of track, as per integer pitch class notation",
+                    ("key",              int,   "musical key of track, as per integer pitch class notation",
                      0, 11, None),
-                    ("time_signature", int, "estimated time signature"),  # how is this parametrised?
-                                                                          # e.g. 4... go look at Rush or something
-                    ("tempo", float, "estimated tempo of track, in bpm"),
-                    ("mode", int, "major (1) or minor (0) modality",
+                    ("time_signature",   int,   "estimated time signature"), # how is this parametrised?
+                                                                             # e.g. 4... go look at Rush or something
+                    ("tempo",            float, "estimated tempo of track, in bpm"),
+                    ("mode",             int,   "major (1) or minor (0) modality",
                      0, 1, None),
 
                     ("acousticness",     float, "confidence measure that track result is acoustic",
@@ -37,14 +37,14 @@ REC_PARAMS       = {
                      0.0, 1.0, None),
                     ("instrumentalness", float, "degree measure of vocal content in track (>0.5 likely instrumental)",
                      0.0, 1.0, None),
-                    ("speechiness", float, "degree measure of spoken word vocals (higher is more speech-like)",
-                     0.0, 1.0, None),  # >0.66 prob spoken word, 0.33-0.66 both music/speech, <0.33 music/non-speech
-                    ("liveness", float, "confidence measure that track is live recording",
+                    ("speechiness",      float, "degree measure of spoken word vocals (higher is more speech-like)",
+                     0.0, 1.0, None),           # >0.66 spoken word, 0.33-0.66 music+speech, <0.33 music/non-speech
+                    ("liveness",         float, "confidence measure that track is live recording",
                      0.0, 1.0, None),
 
                     ("energy",           float, "degree measure that track has intensity, speed, entropy, and activity",
                      0.0, 1.0, None),
-                    ("valence", float, "degree measure of emotional positivity (higher is cheerier",
+                    ("valence",          float, "degree measure of emotional positivity (higher is cheerier",
                      0.0, 1.0, None),
 
                     ("popularity",       int,   "least (0) to most (100) popular; recency of track plays matters",
