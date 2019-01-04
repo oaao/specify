@@ -3,7 +3,7 @@ Transcription of Spotify Recommendation query parameters and their attributes, a
 https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/
 """
 
-REC_PARAM_FIELDS = ["name", "type", "descr", "min", "max", "default"]
+REC_PARAM_FIELDS = {"name", "type", "descr", "min", "max", "default"}
 
 
 # a) max_*, min_*, and target_* exist as fields for tuneable attributes e.g. danceability, max_danceability.
