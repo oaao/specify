@@ -9,7 +9,7 @@ import json
 import base64
 
 # HTTP service/interaction dependencies
-import requests
+import requests as r
 from flask import Flask, request, redirect, render_template
 
 app = Flask(__name__)
@@ -41,7 +41,7 @@ def callback():
 
     auth_headers: Dict[str, str] = {"Authorization": "Basic {}".format(spcf_auth)}
 
-    auth_request = requests.post(SPOTIFY_API['url_token'], data=auth_payload, headers=auth_headers)
+    auth_request = r.post(SPOTIFY_API['url_token'], data=auth_payload, headers=auth_headers)
 
     if auth_request.status_code == 200:
         auth_resp = json.loads(auth_request.text)
