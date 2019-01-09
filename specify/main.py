@@ -60,7 +60,7 @@ def callback():
 
     access_header: str = {f"Authorization: Bearer {access_token}"}
 
-    return "Authorisation success!"
+    return render_template("oauth_QED.html", auth_resp=auth_resp)
 
 
 if __name__ == "__main__":
