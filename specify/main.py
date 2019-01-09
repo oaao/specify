@@ -41,11 +41,16 @@ def callback():
 
     auth_request = r.post(SPOTIFY_API['url_token'], data=auth_payload, headers=auth_headers)
 
+    """
     if auth_request.status_code == 200:
         auth_resp = json.loads(auth_request.text)
     else:
         # log status code, and perform any further desired behaviour dependently
         pass
+    """
+
+    # temporary assumptive acceptance of auth_resp as OK
+    auth_resp = json.loads(auth_request.text)
 
     # currently unsafe: assumes auth_request status code check passes
     access_token:  str    = auth_resp['access_token']
