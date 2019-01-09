@@ -60,9 +60,10 @@ def callback():
 
     access_header: Dict[str, str] = {"Authorization": f"Bearer {access_token}"}
 
-    return render_template("oauth_QED.html", auth_resp=auth_resp)
+    #return render_template("oauth_QED.html", auth_resp=auth_resp)
     #return r.get("https://api.spotify.com/v1/me/", headers=access_header).text
     #return r.get("https://api.spotify.com/v1/me/player/currently-playing", headers=access_header).text
+    return r.get("https://api.spotify.com/v1/audio-analysis/1ysM1tOpKQY06V96Lw3gmk", headers=access_header).text
 
 
 if __name__ == "__main__":
