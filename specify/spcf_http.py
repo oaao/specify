@@ -17,9 +17,9 @@ AUTH_QUERY: Dict[str, str] = {
 
 def format_url_query(url: str, params: dict) -> str:
 
-    param_pairs:   List[str]    = ["{}={}".format(field, parse.quote(content)) for field, content in params.items()]
+    param_pairs:   List[str]    = [f"{field}={parse.quote(content)}" for field, content in params.items()]
     concat_params: str          = "&".join(param_pairs)
 
-    url_query:     str          = "{}/?{}".format(url, concat_params)
+    url_query:     str          = f"{url}/?{concat_params}"
 
     return url_query

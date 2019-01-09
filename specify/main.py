@@ -33,13 +33,11 @@ def callback():
                                     "redirect_uri": spcf_http.AUTH_QUERY['redirect_uri']
                                    }
 
-    spcf_auth:    bytes          = base64.b64encode(
-                                                    "{}:{}"
-                                                    .format(SPECIFY_AUTH['client_id'], SPECIFY_AUTH['client_secret'])
+    spcf_auth:    bytes          = base64.b64encode(f"{SPECIFY_AUTH['client_id']}:{SPECIFY_AUTH['client_secret']}"
                                                     .encode('utf-8')
-                                                   )
+                                                    )
 
-    auth_headers: Dict[str, str] = {"Authorization": "Basic {}".format(spcf_auth)}
+    auth_headers: Dict[str, str] = {"Authorization": f"Basic {spcf_auth}"}
 
     auth_request = r.post(SPOTIFY_API['url_token'], data=auth_payload, headers=auth_headers)
 
@@ -55,7 +53,9 @@ def callback():
     token_type:    str    = auth_resp['token_type']
     expires_in:    str    = auth_resp['expires_in']
 
-    access_header: str = {"Authorization: Bearer {}".format(access_token)}
+    access_header: str = {f"Authorization: Bearer {access_token}"}
+
+    return "Authorisation success!"
 
 
 if __name__ == "__main__":
