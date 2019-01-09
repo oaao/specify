@@ -12,7 +12,7 @@ SPOTIFY_API = {
 SPECIFY_AUTH = {
                 "client_id":     "",
                 "client_secret": ""
-              }
+               }
 
 # server params for this application
 SPECIFY_SERVER = {
