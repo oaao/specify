@@ -35,7 +35,7 @@ def callback():
 
     spcf_auth:    bytes          = base64.b64encode(f"{SPECIFY_AUTH['client_id']}:{SPECIFY_AUTH['client_secret']}"
                                                     .encode('utf-8')
-                                                    )
+                                                    ).decode()
 
     auth_headers: Dict[str, str] = {"Authorization": f"Basic {spcf_auth}"}
 
