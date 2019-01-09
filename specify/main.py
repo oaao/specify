@@ -58,7 +58,7 @@ def callback():
     token_type:    str    = auth_resp['token_type']
     expires_in:    str    = auth_resp['expires_in']
 
-    access_header: str = {f"Authorization: Bearer {access_token}"}
+    access_header: Dict[str, str] = {"Authorization": f"Bearer {access_token}"}
 
     return render_template("oauth_QED.html", auth_resp=auth_resp)
 
