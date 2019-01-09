@@ -1,0 +1,5 @@
+[2018-01-08] address verbal confusion between requests and direct usage of flask.request
+
+[2018-01-08] cleaner reimplementation using spotipy library once the from-scratch approach is figured out
+
+[2018-01-08] logging and case handling for non-200 HTTP responses (especially in the case of auth response)
