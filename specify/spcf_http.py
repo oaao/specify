@@ -1,7 +1,7 @@
 # helper structures and functions for Specify's HTTP interactions
 
 # configuration dependencies
-from specify.config import SPECIFY_SERVER, SPECIFY_AUTH
+from config import SPECIFY_SERVER, SPECIFY_AUTH
 
 # data formatting dependencies
 from typing import Dict, List
