@@ -1,1 +1,6 @@
+# private settings files
 local_settings.py
+
+# project debris
+**/__pycache
+**/.mypy_cache
