@@ -1,5 +1,4 @@
-# static configurations
-
+from local_settings import CLIENT_ID, CLIENT_SECRET
 from typing import Dict
 
 # generic Spotify API parameters
@@ -12,8 +11,8 @@ SPOTIFY_API: Dict[str, str] = {
 
 # authentication params for this application (register on https://developer.spotify.com/applications)
 SPECIFY_AUTH: Dict[str, str] = {
-                                "client_id":     "",
-                                "client_secret": ""
+                                "client_id":     f"{CLIENT_ID}",
+                                "client_secret": f"{CLIENT_SECRET}"
                                }
 
 # server params for this application
@@ -24,5 +23,5 @@ SPECIFY_SERVER: Dict[str, str] = {
                                   "uri_redirect": "{}:{}/callback/",
 
                                   # separated as e.g. "playlist-modify-public playlist-modify-private"
-                                  "scopes":       "user-library-read",
+                                  "scopes":       "user-library-read user-read-currently-playing",
                                  }
