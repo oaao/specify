@@ -2,5 +2,5 @@
 local_settings.py
 
 # project debris
-**/__pycache
+**/__pycache__
 **/.mypy_cache
