@@ -3,7 +3,9 @@
 
     <body>
         {% for artist in data['items'] %}
-            <p><b>Artist:</b> {{ artist['name'] }}
+            <p><b>Artist:</b>
+                <a href="{{ artist['external_urls']['spotify'] }}">{{ artist['name'] }}</a>
+
             (
                 {% set comma = joiner(",") %}
                 {% for genre in artist['genres'] %}
