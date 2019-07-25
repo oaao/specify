@@ -23,5 +23,9 @@ SPECIFY_SERVER: Dict[str, str] = {
                                   "uri_redirect": "{}:{}/callback/",
 
                                   # separated as e.g. "playlist-modify-public playlist-modify-private"
-                                  "scopes":       "user-library-read user-read-currently-playing",
+                                  "scopes":       "\
+                                    user-library-read \
+                                    user-read-currently-playing \
+                                    user-top-read \
+                                    ",
                                  }
