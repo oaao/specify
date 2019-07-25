@@ -19,6 +19,10 @@ def selector(action, headers):
     url:  str = f'{API}{ACTIONS[action]["path"]}'
 
     data = r.get(url, headers=headers).text
-    j    = json.loads(data)
+
+    try:
+        j    = json.loads(data)
+    except ValueError:
+        raise ValueError('no currently playing song')
 
     return render_template(ACTIONS[action]["template"], data=j)
