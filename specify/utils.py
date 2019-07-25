@@ -13,7 +13,10 @@ def selector(action, headers):
         'generic':      {'template': 'table.html',        'path': '{}'}, # accommodate this
         'user':         {'template': 'unknown',           'path': 'me/'},
         'current_song': {'template': 'current_song.html', 'path': 'me/player/currently-playing'},
-        'analysis':     {'template': 'unknown',           'path': 'audio/analysis/{}'} # accommodate this
+        'analysis':     {'template': 'unknown',           'path': 'audio/analysis/{}'}, # accommodate this
+        'top_tracks':   {'template': 'table.html',        'path': 'me/'},
+        'top_artists':  {'template': 'top_artists.html',  'path': 'me/top/artists'},
+        'top_tracks':   {'template': 'table.html',        'path': 'me/top/tracks'},
     }
 
     url:  str = f'{API}{ACTIONS[action]["path"]}'

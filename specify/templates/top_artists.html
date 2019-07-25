@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+
+    <body>
+        {% for artist in data['items'] %}
+            <p><b>Artist:</b> {{ artist['name'] }}
+            (
+                {% set comma = joiner(",") %}
+                {% for genre in artist['genres'] %}
+                    {{ comma() }}
+                    {{ genre }}
+                {% endfor %}
+            )
+            </p>
+        {% endfor %}
+    </body>
+
+</html>

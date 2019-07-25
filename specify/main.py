@@ -63,7 +63,7 @@ def callback():
 
     #data = TestFormatter(j).build_data()
 
-    return selector(action='current_song', headers=access_header)
+    return selector(action='top_artists', headers=access_header)
 
 if __name__ == "__main__":
     app.run(debug=True, port=SPECIFY_SERVER['port'])
