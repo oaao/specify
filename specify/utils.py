@@ -16,7 +16,7 @@ def selector(action, headers):
         'analysis':     {'template': 'unknown',           'path': 'audio/analysis/{}'}, # accommodate this
         'top_tracks':   {'template': 'table.html',        'path': 'me/'},
         'top_artists':  {'template': 'top_artists.html',  'path': 'me/top/artists'},
-        'top_tracks':   {'template': 'table.html',        'path': 'me/top/tracks'},
+        'top_tracks':   {'template': 'top_tracks.html',   'path': 'me/top/tracks'},
     }
 
     url:  str = f'{API}{ACTIONS[action]["path"]}'
