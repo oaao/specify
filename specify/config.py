@@ -6,7 +6,7 @@ SPOTIFY_API: Dict[str, str] = {
                                 "url_base":    "https://api.spotify.com",
                                 "url_auth":    "https://accounts.spotify.com/authorize",
                                 "url_token":   "https://accounts.spotify.com/api/token",
-                                "api_version": "v1"
+                                "api_version": "/v1/"
                               }
 
 # authentication params for this application (register on https://developer.spotify.com/applications)
