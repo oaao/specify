@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+
+    <img src="{{ data['item']['album']['images'][0]['url'] }}" width=256/>
+
+    <p><b>Track:</b> {{ data['item']['name'] }}</p>
+
+    <p><b>Artist(s):</b>
+    {% set comma = joiner(",") %}
+    {% for artist in data['item']['artists'] %}
+        {{ comma() }}
+        {{ artist['name'] }}
+    {% endfor %}
+    </p>
+
+    <p><b>Track Progress:</b> {{ '{0:.0f}%'.format(data['progress_ms'] / data['item']['duration_ms'] * 100)  }}</p>
+
+</html>

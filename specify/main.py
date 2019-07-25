@@ -1,12 +1,17 @@
+import pysnooper
+
 from typing import Dict
 
 # configuration dependencies
-from specify.config import SPOTIFY_API, SPECIFY_AUTH, SPECIFY_SERVER
+from config import SPOTIFY_API, SPECIFY_AUTH, SPECIFY_SERVER
+from utils import selector
+from test_formatter import TestFormatter
 
 # data formatting dependencies
-from specify import spcf_http
 import json
 import base64
+
+import spcf_http
 
 # HTTP service/interaction dependencies
 import requests as r
@@ -16,6 +21,7 @@ app = Flask(__name__)
 
 
 @app.route("/")
+@pysnooper.snoop()
 def index():
 
     url_auth: str = spcf_http.format_url_query(SPOTIFY_API['url_auth'], spcf_http.AUTH_QUERY)
@@ -24,6 +30,7 @@ def index():
 
 
 @app.route("/callback/")
+@pysnooper.snoop()
 def callback():
 
     auth_token:   str            = request.args['code']
@@ -41,30 +48,22 @@ def callback():
 
     auth_request = r.post(SPOTIFY_API['url_token'], data=auth_payload, headers=auth_headers)
 
-    """
     if auth_request.status_code == 200:
         auth_resp = json.loads(auth_request.text)
+
+        access_token:  str    = auth_resp['access_token']
+        #refresh_token: str    = auth_resp['refresh_token']
+        token_type:    str    = auth_resp['token_type']
+        expires_in:    str    = auth_resp['expires_in']
+        scope:         str    = auth_resp['scope']
     else:
-        # log status code, and perform any further desired behaviour dependently
-        pass
-    """
-
-    # temporary assumptive acceptance of auth_resp as OK
-    auth_resp = json.loads(auth_request.text)
-
-    # currently unsafe: assumes auth_request status code check passes
-    access_token:  str    = auth_resp['access_token']
-    refresh_token: str    = auth_resp['refresh_token']
-    token_type:    str    = auth_resp['token_type']
-    expires_in:    str    = auth_resp['expires_in']
+        auth_request.raise_for_status()
 
     access_header: Dict[str, str] = {"Authorization": f"Bearer {access_token}"}
 
-    #return render_template("oauth_QED.html", auth_resp=auth_resp)
-    #return r.get("https://api.spotify.com/v1/me/", headers=access_header).text
-    #return r.get("https://api.spotify.com/v1/me/player/currently-playing", headers=access_header).text
-    return r.get("https://api.spotify.com/v1/audio-analysis/1ysM1tOpKQY06V96Lw3gmk", headers=access_header).text
+    #data = TestFormatter(j).build_data()
 
+    return selector(action='current_song', headers=access_header)
 
 if __name__ == "__main__":
-    app.run(debug=False, port=SPECIFY_SERVER['port'])
+    app.run(debug=True, port=SPECIFY_SERVER['port'])
