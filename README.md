@@ -1,6 +1,6 @@
 # specify
 
-## \[pre-alpha\] http://specify.press
+## \[pre-alpha\] http://oaao.github.io/specify-uitests/pages/main/main.html
 
 A more granular music recommendation engine for Spotify.
 
